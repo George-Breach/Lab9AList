@@ -33,11 +33,13 @@ public class CountingGame
         
         System.out.println("The players list is " + players);
         
+        do {
         rhyme = getRhyme();
 
         // ADD CODE HERE TO PLAY THE GAME
-        System.out.println("The rhyme list is " + rhyme);
-        
+        /* System.out.println("The rhyme list is " + rhyme); */       
+        doRhyme(players, rhyme, position);
+        } while (players.getLength() != 1);
         
         System.out.println("The winner is " + players.getEntry(1));
     }
@@ -56,13 +58,17 @@ public class CountingGame
    public static int doRhyme(ListInterface<Integer> players, ListInterface<String> rhyme, int startAt)
     {
         // COMPLETE THIS METHOD
-	    for (int i = 0; i <= players.getLength(); i++) {
+	   
+	    for (int i = 0; i < rhyme.getLength(); i++) {
 	    		System.out.println("Player " + players.getEntry(startAt) + ": " + rhyme.getEntry(startAt));
+	    		startAt++;
+	    		if (i == rhyme.getLength() - 1) {
+	    			System.out.println("Removing player " + players.getEntry(i + 1));
+	    			players.remove(i+1);
+	    			System.out.println("The players list is " + players);
+	    		}
 	    }
-
-	    
         return -1;
-
      }
     
     
